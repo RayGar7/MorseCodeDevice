@@ -1,0 +1,40 @@
+How it's going to work:
+User can push or press the button to send a morse character. These characters will be stored in an array or list andonce they are able to completean output character 
+(a character from A to Z or a digit) then that output character will be printed in the second row. How do we know when the morse characters have are able to be translated to 
+a morse character? Either when the maximum number of morse characters has been reached (5) or when 5 seconds have passed and the user has not added any morse characters.
+
+Assumptions: 
+
+if the user does not put a valid morse code character combination, then we may print a space or discard it some other way.
+
+the user will not exceed the amount of columns the lcd will display he has on either row
+
+
+Later on, for sending data I will do something similar, when 10 seconds /have passed and the user has created at least 1 valid output character, then that's when I will send the character
+to the server, where it will be displayed in a website.
+
+Technical details: I will keep the output characters in an array, preferably an associative array.
+
+I will also keep an integer variable for the columns in the second row. This is because I will be going back and forth between the first and second column for printing characters
+and I will want to keep track of which column I left off in between subsequent prints.
+
+For decoding the characters this is what im thinking about: have a huge if-else if statement or switch case at the end of the loop function that compares the morse code values
+in that the user has created to the ones that I'm going to hard code with the wikipedia page. if a match has been found print the corresponding enlish character then move up
+a column. For this to work I will need to make two assumptions: the user will always type a valid morse code and he will do so within the time limit. Later on I will handle these
+assumptions by 1: do a thing when given something invalid or by simply deleting it. 2:find a way to reset the time limit any time a dit or dah has been submitted and when a morse code
+has been successfully/unsuccessfully been decoded.
+
+My next step is to be able to append morse characters and compare them to valid english character representations dynamically. The way I will choose to do this is with strings.
+Note:this sounds like a finite-state machine but such an algorithm is not needed becuase we have a special circumstance in that we can tell time with Arduino software.
+
+Becuase Arduino uses it's own language here is the reference document on how to do string operations:
+
+comparings strings: https://www.arduino.cc/en/Tutorial/StringComparisonOperators
+
+appending characters to strings: https://www.arduino.cc/en/Tutorial/StringAdditionOperator
+
+After having done this step, the program is functional. I shall meet up with Dr. Lim tomorrow for our weekly meeting and demonstrate to him my program
+and listen to his comments. Until then I will save needed improvements for later on in the semester.
+
+
+Future work: need to enable debouncing, reset the input counter every time the user has pressed the button.
